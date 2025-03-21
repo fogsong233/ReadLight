@@ -1,38 +1,33 @@
-'use strict';
+"use strict";
 
-// Content script file will run in the context of web page.
-// With content script you can manipulate the web pages using
-// Document Object Model (DOM).
-// You can also pass information to the parent extension.
+import nlp from "compromise";
+import { addHighlightClass } from "./common/highlight";
+import { initStore } from "./common/store";
+import speechPlugin from "compromise-speech";
 
-// We execute this script by making an entry in manifest.json file
-// under `content_scripts` property
-
-// For more information on Content Scripts,
-// See https://developer.chrome.com/extensions/content_scripts
-
-// Log `title` of current active web page
-const pageTitle = document.head.getElementsByTagName('title')[0].innerHTML;
-console.log(
-  `Page title is: '${pageTitle}' - evaluated by Chrome extension's 'contentScript.js' file`
-);
+initStore();
+nlp.plugin(speechPlugin);
 
 // Communicate with background file by sending a message
 chrome.runtime.sendMessage(
   {
-    type: 'GREETINGS',
+    type: "GREETINGS",
     payload: {
-      message: 'Hello, my name is Con. I am from ContentScript.',
+      message: "Hello, my name is Con. I am from ContentScript.",
     },
   },
-  response => {
+  (response) => {
     console.log(response.message);
   }
 );
 
+window.addEventListener("load", () => {
+  addHighlightClass();
+});
+
 // Listen for message
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'COUNT') {
+  if (request.type === "COUNT") {
     console.log(`Current count is ${request.payload.count}`);
   }
 
