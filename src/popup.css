@@ -22,9 +22,14 @@ body {
   height: 500px;
   font-family: "shanggu-serif";
 }
-
+a {
+  appearance: none;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .app {
-  padding: 5% 10%;
+  padding: 5% 10% 0;
   width: 100%;
   height: 100%;
 }
@@ -32,10 +37,17 @@ body {
 .title {
   font-size: 1.5em;
   font-weight: 500;
+  margin-bottom: 1.5em;
 }
 #content {
   font-size: 1.2em;
-  margin-top: 5vh;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.content {
+  font-size: 1.2em;
   width: 100%;
   height: 100%;
   position: relative;
@@ -68,6 +80,11 @@ body {
   color: #0a0a0a;
 }
 
+.button[disabled] {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
 .word-num-container {
   display: flex;
   width: 100%;
@@ -98,7 +115,8 @@ body {
 #light-btn {
   position: absolute;
   width: 100%;
-  bottom: 10%;
+  height: 2.5em;
+  bottom: 5%;
 }
 
 #config {
@@ -120,4 +138,24 @@ body {
 
 .hidden {
   display: none !important;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6em;
+  margin: 0.5em 0;
+}
+
+.list-item > a {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  user-select: none;
+  cursor: pointer;
+}
+
+.list-item > div {
+  max-width: 100%;
+  word-wrap: break-word;
 }

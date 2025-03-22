@@ -1,7 +1,7 @@
 let enabled = false;
 
 export function isReadlightEnabled() {
-  enabled = true;
+  return enabled;
 }
 
 export function setReadLightStatus(newStatus) {
@@ -14,6 +14,6 @@ export function isTagAdded() {
   return tagAdded;
 }
 
-export function addedTag(newStatus) {
+export function addedTag() {
   tagAdded = true;
 }

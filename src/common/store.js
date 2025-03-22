@@ -40,7 +40,8 @@ export const HighlightModeDefaultValue = {
   2: "#eee",
   3: "#fff392",
   4: `
-      font-weight: 700
+  /* 输入css的属性 */
+  font-weight: 700;
   `,
 };
 

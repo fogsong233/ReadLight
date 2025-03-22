@@ -20,12 +20,31 @@
         <div style="height: 2em"></div>
 
         <div id="config">
+          <!--设置分割位点-->
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+            id="split-config"
+          >
+            <div>
+              分割<span
+                style="font-size: 0.7em; margin-left: 0.5em; opacity: 0.8"
+                >刷新页面后应用</span
+              >
+            </div>
+            <select id="split-select"></select>
+          </div>
+
+          <div style="margin-top: 1.5em"></div>
+          <!--下面就是样式的选择-->
           <div style="display: flex; justify-content: space-between">
             <div>样式</div>
             <select id="style-select"></select>
           </div>
-          <!--下面就是样式的选择-->
-
           <div id="style-config" class="config-panel">
             <div id="bold" class="hidden">
               <div>粗细程度</div>
@@ -49,13 +68,54 @@
 
             <div id="style" class="hidden" style="align-items: start">
               <textarea id="style-textarea"></textarea>
-              <div class="button">确定</div>
+            </div>
+          </div>
+          <div style="margin-top: 1.5em"></div>
+
+          <div id="auto-config">
+            <div style="margin-bottom: 1em; width: 100%">
+              自动点亮<span
+                style="font-size: 0.7em; margin-left: 0.5em; opacity: 0.8"
+                >支持通配符</span
+              ><span style="width: 40%; display: inline-block"></span
+              ><a style="font-size: 0.8em; opacity: 0.8; user-select: none"
+                >管理</a
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <input type="text" id="auto-input" />
+              <button
+                class="button"
+                style="opacity: 0.9; font-size: 0.8em; padding: 0.5em 0.8em"
+                id="set-url"
+              >
+                设定
+              </button>
             </div>
           </div>
         </div>
-        <div class="button" id="light-btn">点亮此页面</div>
+        <button class="button" id="light-btn" style="font-size: 0.9em">
+          点亮此页面
+        </button>
+      </div>
+      <div id="manage-site" class="content" hidden>
+        <div style="height: 80%" id="site-list"></div>
+        <button
+          class="button"
+          style="font-size: 0.9em; width: 100%"
+          id="manage-return"
+        >
+          返回
+        </button>
       </div>
     </div>
+
     <script src="popup.js"></script>
   </body>
 </html>

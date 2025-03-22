@@ -14,16 +14,13 @@ import { getCurrentUrlWithoutProtocol } from "./common/util";
 import { MyMsgType } from "./common/message";
 import { isReadlightEnabled, isTagAdded } from "./common/enable";
 
-initStore();
 nlp.plugin(speechPlugin);
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log(`receive:`);
   console.log(message);
-  console.log(message[MyMsgType.enableCmd]);
-  console.log(MyMsgType.enableCmd);
   if (message[MyMsgType.isEnabled] === 1) {
-    return sendResponse({
+    sendResponse({
       [MyMsgType.ResponseTag]: isReadlightEnabled(),
     });
   }
@@ -34,46 +31,55 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         addHighlightClass();
       }
       highlight();
-      return sendResponse({
+      sendResponse({
         [MyMsgType.ResponseTag]: true,
       });
+      return true;
     }
-    return sendResponse({
+    sendResponse({
       [MyMsgType.ResponseTag]: false,
     });
+    return true;
   }
   if (message[MyMsgType.disableCmd] === 1) {
     if (isReadlightEnabled()) {
       disableHighlight();
-      return sendResponse({
+      sendResponse({
         [MyMsgType.ResponseTag]: true,
       });
+      return true;
     }
-    return sendResponse({
+    sendResponse({
       [MyMsgType.ResponseTag]: false,
     });
+    return true;
   }
 
   if (message[MyMsgType.changeStyleCmd] === 1) {
     if (isReadlightEnabled()) {
       disableHighlight();
       highlight();
-      return sendResponse({
+      sendResponse({
         [MyMsgType.ResponseTag]: true,
       });
+      return true;
     }
-    return sendResponse({
+    sendResponse({
       [MyMsgType.ResponseTag]: false,
     });
+    return true;
   }
 });
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
+  await initStore();
   initStyleElement();
   // 是否为auto
   let isAuto = false;
-  const currentUrl = getCurrentUrlWithoutProtocol();
-  for (pattern of Config[ConfigNames.AUTO_URL_PATTERN_LIST]) {
+  const currentUrl = window.location.href;
+  console.log(Config[ConfigNames.AUTO_URL_PATTERN_LIST]);
+  for (const pattern of Config[ConfigNames.AUTO_URL_PATTERN_LIST]) {
+    console.log(`compare ${pattern}: ${currentUrl}`);
     if (wildcardMatch(pattern)(currentUrl)) {
       isAuto = true;
       break;
