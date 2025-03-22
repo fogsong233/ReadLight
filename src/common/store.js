@@ -1,8 +1,6 @@
 export const Store = {
   async set(key, value) {
-    console.log(`set ${key}: ${value}`);
     await chrome.storage.sync.set({ [key]: value });
-    console.log(await chrome.storage.sync.get(null));
   },
   async get(key) {
     return await chrome.storage.sync.get(key);
@@ -50,8 +48,6 @@ export let Config = {};
 export async function initStore() {
   // 读取值
   Config = await chrome.storage.sync.get(null);
-  console.log("now config");
-  console.log(Config);
 }
 
 export async function initOnInstalled() {
@@ -70,7 +66,5 @@ export async function initOnInstalled() {
 chrome.storage.onChanged.addListener((changes) => {
   for (let [key, { newValue }] of Object.entries(changes)) {
     Config[key] = newValue;
-    console.log(`update:`);
-    console.log(changes);
   }
 });

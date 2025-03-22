@@ -2,7 +2,6 @@ import { Config, ConfigNames, SplitMode, Store } from "../common/store";
 
 export async function initSplitConfig() {
   const select = document.querySelector("#split-select");
-  console.log(select);
   const splitName2Value = {
     前两个音节: SplitMode.twoSyllable,
     一个音节: SplitMode.firstSyllable,

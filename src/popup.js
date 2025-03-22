@@ -22,6 +22,7 @@ import { CurrentTabSender } from "./popup/communicate";
 import { MyMsgType } from "./common/message";
 import { initSplitConfig } from "./popup/split-config";
 import { initAutoConfig } from "./popup/auto-highlight";
+import { initAboutPage } from "./popup/about";
 
 nlp.plugin(speechPlugin);
 
@@ -100,6 +101,7 @@ window.onload = async () => {
     // 分割的配置
     initSplitConfig();
     initAutoConfig();
+    initAboutPage();
     // 网站的配置
   } catch (e) {
     lightBtn.disabled = true;
@@ -130,7 +132,6 @@ function relevantStyleBind(highlightModeId, elementId, inputId) {
     case HighlightMode.bg:
       ele.value = Config[ConfigNames.HIGHLIGHT_VALUE];
       ele.onchange = () => {
-        console.log(ele.value);
         Store.set(ConfigNames.HIGHLIGHT_VALUE, ele.value);
       };
       break;

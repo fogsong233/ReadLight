@@ -17,8 +17,6 @@ import { isReadlightEnabled, isTagAdded } from "./common/enable";
 nlp.plugin(speechPlugin);
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  console.log(`receive:`);
-  console.log(message);
   if (message[MyMsgType.isEnabled] === 1) {
     sendResponse({
       [MyMsgType.ResponseTag]: isReadlightEnabled(),
@@ -77,9 +75,7 @@ window.addEventListener("load", async () => {
   // 是否为auto
   let isAuto = false;
   const currentUrl = window.location.href;
-  console.log(Config[ConfigNames.AUTO_URL_PATTERN_LIST]);
   for (const pattern of Config[ConfigNames.AUTO_URL_PATTERN_LIST]) {
-    console.log(`compare ${pattern}: ${currentUrl}`);
     if (wildcardMatch(pattern)(currentUrl)) {
       isAuto = true;
       break;

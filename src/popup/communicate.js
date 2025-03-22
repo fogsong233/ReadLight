@@ -12,7 +12,7 @@ export const CurrentTabSender = {
     let res = await chrome.tabs.sendMessage((await getCurrentTab()).id, {
       [MyMsgType.isEnabled]: 1,
     });
-    console.log(`popupreceive: ${JSON.stringify(res)}`);
+    // console.log(`popupreceive: ${JSON.stringify(res)}`);
     return res[MyMsgType.ResponseTag];
   },
   async enableHighlight() {

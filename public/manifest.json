@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Highlight Read",
+  "name": "Highlight Read (BETA)",
   "$schema": "https://json.schemastore.org/chrome-manifest.json",
   "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "description": "让非英语母语着拥有和母语者一样的阅读速度.此扩展程序目前处于 Beta 版测试阶段.",
   "icons": {
-    "16": "icons/icon_16.png",
-    "32": "icons/icon_32.png",
-    "48": "icons/icon_48.png",
-    "128": "icons/icon_128.png"
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "background": {
     "service_worker": "background.js"

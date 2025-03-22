@@ -20,7 +20,6 @@ export async function initAutoConfig() {
     setUrlBtn.textContent = "成功!";
     setTimeout(() => {
       setUrlBtn.textContent = "设定";
-      console.log(Config);
     }, 2000);
   };
   document.getElementById("manage-return").onclick = () => {
@@ -32,9 +31,7 @@ export async function initAutoConfig() {
     document.getElementById("content").hidden = true;
     document.getElementById("manage-site").hidden = false;
     // 载入列表
-    console.log(Config[ConfigNames.AUTO_URL_PATTERN_LIST]);
     const itemListEle = document.querySelector("#site-list");
-    console.log(itemListEle);
     for (const url of Config[ConfigNames.AUTO_URL_PATTERN_LIST]) {
       const item = document.createElement("div");
       item.classList.add("list-item");

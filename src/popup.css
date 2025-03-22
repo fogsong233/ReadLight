@@ -1,5 +1,6 @@
 /* normalize css starts here */
 @import url(popup/form.css);
+@import url(popup/icon.css);
 
 *,
 *::before,
@@ -158,4 +159,9 @@ a {
 .list-item > div {
   max-width: 100%;
   word-wrap: break-word;
+}
+
+.click-img {
+  user-select: none;
+  cursor: pointer;
 }

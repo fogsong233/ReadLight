@@ -8,7 +8,20 @@
   </head>
   <body>
     <div class="app">
-      <div class="title">Read Light</div>
+      <div
+        class="title"
+        style="
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: stretch;
+        "
+      >
+        Read Light
+        <div style="margin-left: auto">
+          <a style="font-size: 0.7em" id="about-btn"> 关于 </a>
+        </div>
+      </div>
 
       <div id="content">
         <div class="word-num-container">
@@ -113,6 +126,59 @@
         >
           返回
         </button>
+      </div>
+      <div id="about" class="content" hidden style="overflow: visible">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          "
+        >
+          <div style="margin-top: 2em"></div>
+          <div
+            style="
+              width: 30%;
+              overflow: visible;
+              position: relative;
+              height: 20%;
+            "
+          >
+            <img
+              src="icons/icon.png"
+              width="100%"
+              style="border-radius: 100%; position: absolute; z-index: 10"
+            />
+            <img
+              src="icons/icon.png"
+              width="100%"
+              style="
+                box-shadow: 7px 8px 20px 20px #f8f4ce;
+                border-radius: 100%;
+                filter: blur(10px);
+                scale: 1.2;
+                translate: 0.2em 0.2em;
+                position: absolute;
+              "
+            />
+          </div>
+          <p style="margin-top: 55%; z-index: 100">
+            让非英文母语者享有母语的速度.
+          </p>
+          <div
+            style="
+              display: flex;
+              padding: 10% 20%;
+              justify-content: space-evenly;
+              width: 100%;
+            "
+          >
+            <span class="line-md--github click-img" id="github-go"></span>
+            <a><span class="line-md--home-simple" id="home-go"></span></a>
+          </div>
+        </div>
       </div>
     </div>
 

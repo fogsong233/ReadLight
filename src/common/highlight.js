@@ -10,7 +10,6 @@ export function addHighlightClass() {
   document.body.querySelectorAll(QUERY_SELECTOR_STR).forEach((element) => {
     highlightWordNum += addHighlightClassOfEle(element);
   });
-  console.log("get:" + highlightWordNum);
   Store.set(
     ConfigNames.MODIFIED_WORD_NUM,
     Config[ConfigNames.MODIFIED_WORD_NUM] + highlightWordNum
@@ -48,7 +47,6 @@ export function highlight() {
   if (isReadlightEnabled()) {
     return;
   }
-  console.log(QUERY_SELECTOR_STR);
   // 选择注入css
   const storeStyleEle = document.querySelector(`#${STYLE_ELE_ID}`);
   let cssStr = "";
