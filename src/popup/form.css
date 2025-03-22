@@ -1,0 +1,71 @@
+body {
+  --btn-color: rgb(242, 244, 137);
+  --btn-hover-color: rgb(239, 241, 72);
+}
+
+input[type="color"] {
+  appearance: none;
+  width: 2.2em;
+  height: 2.2em;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 50%;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #ddd;
+}
+
+select {
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  background-color: #eee;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  -ms-border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+/* 鼠标悬停效果 */
+select:hover {
+  background-color: var(--btn-color);
+}
+
+textarea {
+  appearance: none;
+  outline: none;
+  border-color: #eee;
+  border-width: 2px;
+  border-radius: 5px;
+  background-image: none;
+  background-color: transparent;
+  height: 4em;
+  width: 60%;
+  transition: all 0.3s ease;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--btn-hover-color);
+}

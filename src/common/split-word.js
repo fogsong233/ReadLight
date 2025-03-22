@@ -4,11 +4,16 @@ import nlp from "compromise";
 import { Config, ConfigNames, SplitMode } from "./store";
 
 function splitBySyllables(word, splitPoint = 2) {
+  // try {
   const res = Array.from(nlp(word).syllables()).flat();
   if (res.length <= splitPoint) {
     return [res.join(""), ""];
   }
   return [res.slice(0, splitPoint).join(""), res.slice(splitPoint).join("")];
+  // } catch (e) {
+  //   console.log(`error in parsing:${e} of ${word}`);
+  //   return splitByProportion(word, 1, 2);
+  // }
 }
 
 function splitByProportion(word, first, second) {

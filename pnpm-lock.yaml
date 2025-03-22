@@ -17,9 +17,9 @@ importers:
       compromise-speech:
         specifier: ^0.1.1
         version: 0.1.1(compromise@14.14.4)
-      compromise-syllables:
-        specifier: ^0.0.6
-        version: 0.0.6(compromise@14.14.4)
+      wildcard-match:
+        specifier: ^5.1.4
+        version: 5.1.4
     devDependencies:
       copy-webpack-plugin:
         specifier: ^6.4.1
@@ -354,11 +354,6 @@ packages:
     resolution: {integrity: sha512-nTT/zi0cNQXoiwnvJVl6Sm9TLE+esHmjRHISmyPw3DtiLPagpaONFKa/rY/gCgvOGemOkr3i4jOj+gG5YtdsOw==}
     peerDependencies:
       compromise: '>=14.0.0'
-
-  compromise-syllables@0.0.6:
-    resolution: {integrity: sha512-27UnmoL2PqmBE9+LnB1VmiZa+Y1MoZvAtYIn6WvqDX9h2X3wPtlUqPoatqA2p4Jq36f6hahzrPgaTVaE8qlC2Q==}
-    peerDependencies:
-      compromise: '>=12.0.0'
 
   compromise@14.14.4:
     resolution: {integrity: sha512-QdbJwronwxeqb7a5KFK/+Y5YieZ4PE1f7ai0vU58Pp4jih+soDCBMuKVbhDEPQ+6+vI3vSiG4UAAjTAXLJw1Qw==}
@@ -1417,6 +1412,9 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
+  wildcard-match@5.1.4:
+    resolution: {integrity: sha512-wldeCaczs8XXq7hj+5d/F38JE2r7EXgb6WQDM84RVwxy81T/sxB5e9+uZLK9Q9oNz1mlvjut+QtvgaOQFPVq/g==}
+
   wildcard@2.0.1:
     resolution: {integrity: sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==}
 
@@ -1787,10 +1785,6 @@ snapshots:
   commondir@1.0.1: {}
 
   compromise-speech@0.1.1(compromise@14.14.4):
-    dependencies:
-      compromise: 14.14.4
-
-  compromise-syllables@0.0.6(compromise@14.14.4):
     dependencies:
       compromise: 14.14.4
 
@@ -3001,6 +2995,8 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+
+  wildcard-match@5.1.4: {}
 
   wildcard@2.0.1: {}
 

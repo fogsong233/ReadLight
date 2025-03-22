@@ -3,12 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <title>readlight</title>
+    <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
     <div class="app">
       <div class="title">Read Light</div>
-      aa
+
+      <div id="content">
+        <div class="word-num-container">
+          <div id="word-num-pre">点亮</div>
+          <div id="word-num">0</div>
+          <div id="word-num-after">词</div>
+        </div>
+
+        <div style="height: 2em"></div>
+
+        <div id="config">
+          <div style="display: flex; justify-content: space-between">
+            <div>样式</div>
+            <select id="style-select"></select>
+          </div>
+          <!--下面就是样式的选择-->
+
+          <div id="style-config" class="config-panel">
+            <div id="bold" class="hidden">
+              <div>粗细程度</div>
+              <select id="bold-select">
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+              </select>
+            </div>
+
+            <div id="bg" class="hidden">
+              <div>颜色</div>
+              <input type="color" id="bg-select" />
+            </div>
+
+            <div id="color" class="hidden">
+              <div>颜色</div>
+              <input type="color" id="color-select" />
+            </div>
+
+            <div id="style" class="hidden" style="align-items: start">
+              <textarea id="style-textarea"></textarea>
+              <div class="button">确定</div>
+            </div>
+          </div>
+        </div>
+        <div class="button" id="light-btn">点亮此页面</div>
+      </div>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
