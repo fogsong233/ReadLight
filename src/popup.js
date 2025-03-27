@@ -20,6 +20,7 @@ import { initAutoConfig } from "./popup/auto-highlight";
 import { initAboutPage } from "./popup/about";
 import { initStyleCfg } from "./popup/style-config";
 import { initLightBtn, lightBtn } from "./popup/light-state";
+import { notSupportPageOn } from "./popup/err-page";
 
 nlp.plugin(speechPlugin);
 
@@ -44,7 +45,7 @@ window.onload = async () => {
     initAboutPage();
   } catch (e) {
     console.log(e);
-    lightBtn.disabled = true;
+    notSupportPageOn();
   }
 };
 

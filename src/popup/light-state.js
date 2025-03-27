@@ -1,5 +1,6 @@
 import { highlight } from "../common/highlight";
 import { CurrentTabSender } from "./communicate";
+import { notSupportPageOn } from "./err-page";
 import { enableRefreshIcon } from "./style-config";
 
 const lightBtnText = {
@@ -18,12 +19,17 @@ export async function initLightBtn() {
   lightBtn = document.querySelector("#light-btn");
   lightBtn.disable = true;
   queryReadyStateTaskId = setInterval(async () => {
-    if (await CurrentTabSender.queryReadyState()) {
-      lightBtn.disable = false;
-      refreshLightBtnState();
+    try {
+      if (await CurrentTabSender.queryReadyState()) {
+        lightBtn.disable = false;
+        refreshLightBtnState();
+        clearInterval(queryReadyStateTaskId);
+        // 对刷新按钮的操控
+        enableRefreshIcon();
+      }
+    } catch (e) {
+      notSupportPageOn();
       clearInterval(queryReadyStateTaskId);
-      // 对刷新按钮的操控
-      enableRefreshIcon();
     }
   }, 500);
   lightBtn.onclick = async () => {
