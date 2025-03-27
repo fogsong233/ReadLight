@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Highlight Read",
   "$schema": "https://json.schemastore.org/chrome-manifest.json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "让非英语母语着拥有和母语者一样的阅读速度.",
   "icons": {
     "16": "icons/icon16.png",
