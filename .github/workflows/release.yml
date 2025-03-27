@@ -43,10 +43,13 @@ jobs:
         id: decode_commit_message
         run: echo "DECODED_COMMIT_MESSAGE=$(echo ${{ steps.commit_message.outputs.COMMIT_MESSAGE }} | base64 --decode)" >> $GITHUB_ENV
 
+      - name: Zip the dist folder
+        run: zip -r extension.zip build/
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           body: ${{ env.DECODED_COMMIT_MESSAGE }}
           draft: false
           prerelease: false
-          files: build/*
+          files: extension.zip
