@@ -36,4 +36,11 @@ export const CurrentTabSender = {
       })
     )[MyMsgType.ResponseTag];
   },
+  async queryReadyState() {
+    return (
+      await chrome.tabs.sendMessage((await getCurrentTab()).id, {
+        [MyMsgType.IsReady]: 1,
+      })
+    )[MyMsgType.ResponseTag];
+  },
 };

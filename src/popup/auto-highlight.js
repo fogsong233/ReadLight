@@ -24,12 +24,15 @@ export async function initAutoConfig() {
   };
   document.getElementById("manage-return").onclick = () => {
     document.getElementById("content").hidden = false;
+    document.getElementById("about-btn").hidden = false;
     document.getElementById("manage-site").hidden = true;
   };
 
   document.querySelector("#auto-config a").onclick = () => {
     document.getElementById("content").hidden = true;
+    document.getElementById("about").hidden = true;
     document.getElementById("manage-site").hidden = false;
+    document.getElementById("about-btn").hidden = true;
     // 载入列表
     const itemListEle = document.querySelector("#site-list");
     for (const url of Config[ConfigNames.AUTO_URL_PATTERN_LIST]) {

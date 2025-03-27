@@ -47,27 +47,31 @@ export function highlight() {
   if (isReadlightEnabled()) {
     return;
   }
+
+  const constructCss = (inner) =>
+    `.${STYLE_CLASS_NAME} > span {
+  ${inner}
+  }
+  `;
   // 选择注入css
   const storeStyleEle = document.querySelector(`#${STYLE_ELE_ID}`);
   let cssStr = "";
   switch (Config[ConfigNames.HIGHLIGHT_TYPE]) {
     case HighlightMode.bold:
-      cssStr = `font-weight: ${Config[ConfigNames.HIGHLIGHT_VALUE]};`;
+      cssStr = constructCss(`font-weight: ${Config[ConfigNames.BOLD_STORE]};`);
       break;
     case HighlightMode.color:
-      cssStr = `color: ${Config[ConfigNames.HIGHLIGHT_VALUE]};`;
+      cssStr = constructCss(`color: ${Config[ConfigNames.COLOR_STORE]};`);
       break;
     case HighlightMode.bg:
-      cssStr = `background-color: ${Config[ConfigNames.HIGHLIGHT_VALUE]};`;
+      cssStr = constructCss(
+        `background-color: ${Config[ConfigNames.BG_STORE]};`
+      );
       break;
     case HighlightMode.style:
-      cssStr = Config[ConfigNames.HIGHLIGHT_VALUE];
+      cssStr = Config[ConfigNames.STYLE_STORE];
   }
-  storeStyleEle.textContent = `
-  .${STYLE_CLASS_NAME} > span {
-    ${cssStr}
-  }
-  `;
+  storeStyleEle.textContent = cssStr;
   setReadLightStatus(true);
 }
 
@@ -75,4 +79,9 @@ export function disableHighlight() {
   const storeStyleEle = document.querySelector(`#${STYLE_ELE_ID}`);
   storeStyleEle.textContent = "";
   setReadLightStatus(false);
+}
+
+export function rehighlight() {
+  disableHighlight();
+  highlight();
 }

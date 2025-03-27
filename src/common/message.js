@@ -6,4 +6,5 @@ export const MyMsgType = {
   disableCmd: "disableCmd",
   changeStyleCmd: "change_style_cmd",
   ResponseTag: "response_tag",
+  IsReady: "is_ready",
 };

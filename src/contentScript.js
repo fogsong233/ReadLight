@@ -6,11 +6,11 @@ import {
   disableHighlight,
   highlight,
   initStyleElement,
+  rehighlight,
 } from "./common/highlight";
 import { Config, ConfigNames, initStore } from "./common/store";
 import speechPlugin from "compromise-speech";
 import wildcardMatch from "wildcard-match";
-import { getCurrentUrlWithoutProtocol } from "./common/util";
 import { MyMsgType } from "./common/message";
 import { isReadlightEnabled, isTagAdded } from "./common/enable";
 
@@ -54,16 +54,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message[MyMsgType.changeStyleCmd] === 1) {
-    if (isReadlightEnabled()) {
-      disableHighlight();
-      highlight();
-      sendResponse({
-        [MyMsgType.ResponseTag]: true,
-      });
-      return true;
-    }
+    rehighlight();
     sendResponse({
-      [MyMsgType.ResponseTag]: false,
+      [MyMsgType.ResponseTag]: true,
+    });
+    return true;
+  }
+
+  if (message[MyMsgType.IsReady] === 1) {
+    sendResponse({
+      [MyMsgType.ResponseTag]: !(document.readyState == "loading"),
     });
     return true;
   }

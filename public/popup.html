@@ -55,7 +55,15 @@
           <div style="margin-top: 1.5em"></div>
           <!--下面就是样式的选择-->
           <div style="display: flex; justify-content: space-between">
-            <div>样式</div>
+            <div style="display: flex; align-items: center">
+              样式
+              <span
+                class="material-symbols--refresh-rounded"
+                id="refresh-icon"
+                style="margin-left: 0.5em"
+                hidden
+              ></span>
+            </div>
             <select id="style-select"></select>
           </div>
           <div id="style-config" class="config-panel">
@@ -114,7 +122,7 @@
           </div>
         </div>
         <button class="button" id="light-btn" style="font-size: 0.9em">
-          点亮此页面
+          加载中
         </button>
       </div>
       <div id="manage-site" class="content" hidden>
@@ -167,6 +175,9 @@
           <p style="margin-top: 55%; z-index: 100">
             让非英文母语者享有母语的速度.
           </p>
+          <p style="margin-top: 0.5em; font-size: 0.8em; opacity: 0.8">
+            version: Furina 1.0.0
+          </p>
           <div
             style="
               display: flex;
@@ -176,12 +187,30 @@
             "
           >
             <span class="line-md--github click-img" id="github-go"></span>
-            <a><span class="line-md--home-simple" id="home-go"></span></a>
+            <span class="line-md--home-simple click-img" id="home-go"></span>
           </div>
         </div>
+        <footer
+          style="
+            bottom: 2em;
+            font-size: 0.6em;
+            opacity: 0.8;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            align-content: stretch;
+            width: 100%;
+            position: fixed;
+            right: 2em;
+            bottom: 1.8em;
+          "
+        >
+          <div><a href="">开源许可</a></div>
+          <div style="height: 0.4em"></div>
+          <div>开发者: fogsong233 (Kacent)</div>
+        </footer>
       </div>
     </div>
-
     <script src="popup.js"></script>
   </body>
 </html>
