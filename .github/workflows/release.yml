@@ -32,12 +32,18 @@ jobs:
 
       - name: Get the commit message for the tag
         id: commit_message
-        run: echo "COMMIT_MESSAGE=$(git log -1 --format=%B)" >> $GITHUB_ENV
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --format=%B | base64)
+          echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
+
+      - name: Decode commit message
+        id: decode_commit_message
+        run: echo "DECODED_COMMIT_MESSAGE=$(echo ${{ steps.commit_message.outputs.COMMIT_MESSAGE }} | base64 --decode)" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          body: ${{ env.COMMIT_MESSAGE }}
+          body: ${{ env.DECODED_COMMIT_MESSAGE }}
           draft: false
           prerelease: false
           files: build/*
