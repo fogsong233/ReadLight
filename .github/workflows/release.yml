@@ -1,0 +1,43 @@
+name: Auto Release on Tag
+
+on:
+  push:
+    tags:
+      - "v*" # 只有推送的标签以 v 开头时触发
+    branches:
+      - "main" # 确保只在 main 分支的标签上触发
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (if applicable)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Get the commit message for the tag
+        id: commit_message
+        run: echo "COMMIT_MESSAGE=$(git log -1 --format=%B)" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: ${{ env.COMMIT_MESSAGE }}
+          draft: false
+          prerelease: false
+          files: build/*
