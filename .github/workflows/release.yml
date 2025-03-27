@@ -36,7 +36,7 @@ jobs:
       - name: Get the commit message for the tag
         id: commit_message
         run: |
-          COMMIT_MESSAGE=$(git log -1 --format=%B | base64)
+          COMMIT_MESSAGE=$(git log -1 --format=%B | base64 -w 0)
           echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
 
       - name: Decode commit message
